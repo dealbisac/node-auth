@@ -8,7 +8,7 @@ router.get('/', verify, (req, res) => {
             title: "Hello Everyone Welcome !",
             description: " Welcome to the very first post of the MERN authetication, This is the backend of the system."
         }
-    }
+    })
     // res.send(req.user);
     // User.findbyOne({ _id: req.user });
 });
