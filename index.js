@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 //Import Routes
 const authRoute = require('./routes/auth');
 const postRoute = require('./routes/posts');
-const homeRoute = require('./routes/home');
+// const homeRoute = require('./routes/home');
 
 dotenv.config();
 
@@ -23,6 +23,10 @@ mongoose.connect(
     () => console.log('Database Connection Successful!')
 );
 
+// //View Engine
+// app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'html');
+
 //MiddleWare
 app.use(express.json());
 
@@ -30,7 +34,7 @@ app.use(express.json());
 //Route Middlewares
 app.use('/api/user', authRoute);
 app.use('/api/posts', postRoute);
-app.use('/', homeRoute);
+// app.use('/', homeRoute);
 
 //Define the port
 const port = process.env.PORT || 3000;
