@@ -13,7 +13,6 @@ const registerValidation = (data) => {
 
 
 //Login Validation
-//Register Validation
 const loginValidation = (data) => {
     const schema = {
         email: Joi.string().min(6).required().email(),
