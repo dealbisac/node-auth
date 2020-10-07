@@ -24,8 +24,9 @@ router.post('/register', async (req, res) => {
         password: hashedPassword
     });
     try {
-        const savedUser = await user.save();
-        res.send({ user: user._id });
+        const savedUser = user.save();
+        // res.send({ user: user._id });
+        res.send('Registered Succesfully !');
     } catch (err) {
         res.status(400).send(err);
     }
@@ -46,7 +47,8 @@ router.post('/login', async (req, res) => {
 
     //Create and assign a token.
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).send(token);
+    // res.header('auth-token', token).send(token);
+    res.header('auth-token', token);
 
     res.send('Logged in!');
 

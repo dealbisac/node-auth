@@ -10,8 +10,9 @@ const postRoute = require('./routes/posts');
 dotenv.config();
 
 // Database Connection
+const db = process.env.MONGO_URI || 'test';
 mongoose.connect(
-    process.env.MONGO_URI,
+    db,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -29,4 +30,6 @@ app.use(express.json());
 app.use('/api/user', authRoute);
 app.use('/api/posts', postRoute);
 
-app.listen(3000, () => console.log("Server is up and running"));
+//Define the port
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log("Server is up and running to port 3000"));
