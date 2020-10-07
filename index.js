@@ -1,13 +1,12 @@
 const express = require('express');
 const app = express();
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
 dotenv.config();
 
 // Database Connection
-mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, ()
-    => console.log('Database Connection Successful!')
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => console.log('Database Connection Successful!')
 );
 
 //Import Routes
