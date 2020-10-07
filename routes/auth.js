@@ -2,7 +2,6 @@ const router = require('express').Router();
 const User = require('../model/User');
 const bcrpyt = require('bcryptjs');
 const { registerValidation, loginValidation } = require('../validation');
-const { exist } = require('@hapi/joi');
 
 
 router.post('/register', async (req, res) => {
@@ -17,7 +16,6 @@ router.post('/register', async (req, res) => {
     //Hash passwords
     const salt = await bcrpyt.genSalt(10);
     const hashedPassword = await bcrpyt.hash(req.body.password, salt);
-
 
     const user = new User({
         name: req.body.name,
@@ -38,8 +36,8 @@ router.post('/login', async (req, res) => {
     if (error) return res.status(400).send(error.details[0].message);
 
     //Checking if email exists in the database
-    const emailExist = await User.findOne({ email: req.body.email });
-    if (!emailExist) return res.status(400).send('Email donot exist.');
+    const user = await User.findOne({ email: req.body.email });
+    if (!user) return res.status(400).send('Email donot exist.');
 
     //Password is correct
     const validPass = await bcrpyt.compare(req.body.password, user.password);
