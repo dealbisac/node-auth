@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
+const dotenv = require('dotenv')
 const mongoose = require('mongoose');
 
+dotenv.config();
+
 // Database Connection
-mongoose.connect(
-    'mongodb+srv://dip3790:dip3790@cluster0.lhzre.mongodb.net/node_auth?retryWrites=true&w=majority',
-    { useNewUrlParser: true },
-    () => console.log('Database Connection Successful!'));
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, ()
+    => console.log('Database Connection Successful!')
+);
 
 //Import Routes
 const authRoute = require('./routes/auth');
