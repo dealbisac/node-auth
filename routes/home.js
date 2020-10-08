@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
-    res.render('index', {
+    res.render('layout.hbs', {
         title: 'Hello, world!',
         content: 'How are you?'
     });
