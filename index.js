@@ -23,7 +23,7 @@ mongoose.connect(
     () => console.log('Database Connection Successful!')
 );
 
-// //View Engine
+// View Engine
 // app.engine('html', require('ejs').renderFile);
 // app.set('view engine', 'html');
 
